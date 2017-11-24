@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<script src="modernizr-1.6.min.js"></script>
+<script type="text/javascript">
+window.addEventListener('load', eventWindowLoaded, false);
+function eventWindowLoaded() {
+   settingsAtStart();
+}
+
+function settingsAtStart()
+{
+
+
+   //alert("settings at start");
+   var canvas = document.getElementById('myCanvas');
+
+   var ctx = canvas.getContext('2d');
+
+   // clear the canvas. Will also help when the loop runs.
+   ctx.clearRect(0,0, 530, 400);
+   // create a line
+
+   ctx.beginPath();
+   ctx.moveTo(20,35)
+   ctx.lineTo(20, 375);
+   ctx.lineTo(375,375);
+   ctx.lineTo(500, 375);
+   ctx.lineTo(360,375);
+   ctx.lineTo(20,35);
+   //ctx.MoveTo(375,375);
+   ctx.fillStyle='#DEB887';
+   ctx.fill();
+   ctx.stroke();
+
+   // increment x's place by 10;
+
+   // create a circle
+   ctx.beginPath();
+   // down below is the new ball
+   ctx.arc(63, 35, 30, 0, Math.PI * 2, true);
+   ctx.fillStyle="#FF6347";
+   ctx.closePath();
+   ctx.fill();
+   ctx.stroke();
+   // down below is the original ball
+   ctx.beginPath();
+   ctx.arc(115, 95, 25, 0, Math.PI * 2, true);
+   ctx.fillStyle="#83d0f2";
+   ctx.closePath();
+   // fill in color in the circle
+   ctx.fill();
+   // put the color on its circumference
+   ctx.stroke();
+}
+
+
+
+function canvasApp() {
+
+  function draw(){
+
+           var canvas = document.getElementById('myCanvas');
+
+            var ctx = canvas.getContext('2d');
+
+            // clear the canvas. Will also help when the loop runs.
+            ctx.clearRect(0,0, 530, 400);
+            // create a line
+            /*
+            ctx.beginPath();
+            ctx.moveTo(35,340);
+            ctx.lineTo(500, 340);
+            ctx.lineTo(500, 350);
+            ctx.lineTo(35, 350);
+            ctx.lineTo(35, 340);
+            ctx.stroke();
+            */
+            ctx.beginPath();
+            ctx.moveTo(20,35);
+            ctx.lineTo(20, 375);
+            ctx.lineTo(375,375);
+            ctx.lineTo(500, 375);
+            ctx.lineTo(360,375);
+            ctx.lineTo(20,35);
+            //ctx.MoveTo(375,375);
+            ctx.fillStyle='#DEB887';
+            ctx.fill();
+            ctx.stroke();
+
+            // increment x's place by 10;
+
+           /*
+            if(x<483 && flag== 0)
+
+            x+=speed;
+
+            else{
+              x-=speed;
+              flag= -1;
+              if(x<45)
+                 flag=0;
+            }
+            */
+            if(y<350)
+            {
+            //alert("x is "+x);
+            x+=2;
+            y+=2;
+            }
+            else if(x<481.4) {
+                //alert("x is "+x);
+                if(x>=480)
+                   {
+                  //   alert("first ball"+x);
+                     clearInterval(flag);
+                   }
+
+              x+=5;
+            }
+
+            if(n<345)
+            {
+            //alert("x is "+x);
+            m+=3;
+            n+=3;
+            }
+            else if(m<500) {
+                //alert("m is "+x);
+
+                if(m>=486)
+                   {
+                     //alert("second ball"+m);
+                     clearInterval(secondFlag);
+                   }
+
+              m+=5;
+            }
+            // create a circle
+            ctx.beginPath();
+            // down below is the new ball
+            ctx.arc(m, n, 30, 0, Math.PI * 2, true);
+            ctx.fillStyle="#FF6347";
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // down below is the original ball
+
+            ctx.beginPath();
+            ctx.arc(x, y, 25, 0, Math.PI * 2, true);
+            ctx.fillStyle="#83d0f2";
+            ctx.closePath();
+            // fill in color in the circle
+            ctx.fill();
+            // put the color on its circumference
+            ctx.stroke();
+
+        }
+
+
+
+
+
+   //var y = 300;
+   //var x = 75;
+   var x= 115;
+   var y= 95;
+   var m= 63;
+   var n = 35;
+
+   var flag = setInterval(draw, 33);
+   var secondFlag = setInterval(draw, 33);
+
+
+
+
+}
+
+
+
+
+
+
+
+
+</script>
+
+</head>
+<body>
+
+<p id="heading"><font size="6">Motion on an incline Plane</font></p>
+
+<input id="slideButton"type= "button" value="slide" onClick= "canvasApp()">
+<input type= "button" value="Reset" onClick= "settingsAtStart()">
+<div style="position: absolute; top: 40px; left: 50px;">
+
+<canvas id="myCanvas" width="530" height="400"></canvas>
+
+</canvas>
+</div>
+
+</body>
+</html>

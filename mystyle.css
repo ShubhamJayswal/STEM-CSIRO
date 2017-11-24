@@ -1,0 +1,17 @@
+canvas {
+  border: 2px solid black;
+  margin-left: 350px;
+  margin-top: 200px;
+}
+
+#heading{
+    font-size: '4';
+    margin-left: 490px;
+    margin-top: 150px;
+}
+
+
+#slideButton{
+  margin-left: 600px;
+  margin-top: 550px;
+}
